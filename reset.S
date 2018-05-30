@@ -26,13 +26,7 @@ copy1:
 init_s_data:
 	ldr		x0, =ram_s_sdata
 	ldr		x1, =flash_s_sdata
-	ldr		x2, =ns_data_size
-	ldr		x3, =ram_ns_end
-	ldr		x4, =ram_ns_sdata
-	sub		x3, x3, x4
-	ldr		x4, =flash_ns_sdata
-	add		x4, x4, x3
-	mov		x1, x4
+	ldr		x2, =s_data_size
 
 copy2:
 	cmp		x2, #0
