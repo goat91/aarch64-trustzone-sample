@@ -10,7 +10,7 @@ extern uint64_t runtime_sp;
 cpu_context_t *cpu_get_context(int state)
 {
 	cpu_context_t *ctx;
-	if (state != SECURE || state != NONSECURE)
+	if (state != SECURE && state != NONSECURE)
 		return 0;
 
 	return &smc_ctx[state];
@@ -50,7 +50,7 @@ void cpu_init_context(int state)
 		ctx->elr_el3 = nsecure_init;
 		ctx->scr_el3 = 0x401;
 	}
-	ctx->sp_el0 = 0x80000000;
+	ctx->sp_el0 = &runtime_sp;
 }
 
 void my_smc_handler(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint64_t x4, int flag)

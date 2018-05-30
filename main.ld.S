@@ -1,5 +1,12 @@
 ENTRY(reset)
 
+/*MEMORY {
+	rom (rx): orig = 0x0, len = 16M
+	normal_ram (rwx): orig = 0x40000000, len = 256M
+	secure_ram (rwx): orig = 0x50000000, len = 256M
+	runtime_ram (rwx): orig = 0x60000000, len = 512M
+}*/
+
 SECTIONS {
 	. = 0x0;
 	.text : {
